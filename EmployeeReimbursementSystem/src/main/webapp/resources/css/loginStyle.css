@@ -1,0 +1,43 @@
+body{
+background-color: smokewhite;
+}
+.mainHeading{
+padding-left: 300px;
+}
+.secondHeading{
+padding-left: 550px;
+}
+.mid{
+padding-left:75px;
+
+}
+.select{
+padding-left:190px;
+margin-top:30px;
+}
+.form{
+
+width:500px;
+height:200px;
+border: 2px solid black;
+vertical-align:middle; 
+margin-left: 290px;
+padding-top: 50px;
+padding-left: 90px;
+
+}
+.header{
+padding-left:500px;
+
+}
+.footer{
+
+padding-left:190px;
+margin-top:2px;
+
+}
+.google{
+	
+	margin-left:140px;
+	margin-top:60px;
+}
