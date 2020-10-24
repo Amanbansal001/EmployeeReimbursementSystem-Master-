@@ -1,11 +1,13 @@
 package com.employeeReimbursementSystem.entity;
 
-public class UsersCreds {
+import com.employeeReimbursementSystem.factory.EntityInterface;
+
+public class UsersCreds  implements EntityInterface{
 	
 private String empId;
 private String password;
 private String email;
-private int role;
+private String  role;
 public String getEmpId() {
 	return empId;
 }
@@ -24,15 +26,16 @@ public String getEmail() {
 public void setEmail(String email) {
 	this.email = email;
 }
-public int getRole() {
+public String  getRole() {
 	return role;
 }
-public void setRole(int role) {
+public void setRole(String role) {
 	this.role = role;
 }
 @Override
 public String toString() {
 	return "UsersCreds [empId=" + empId + ", password=" + password + ", email=" + email + ", role=" + role + "]";
 }
+
 
 }

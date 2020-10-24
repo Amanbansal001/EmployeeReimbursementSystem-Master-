@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +21,7 @@
         <button class="w3-bar-item w3-button w3-large"
         onclick="w3_close()">Close</button>
          <a href="#" class="w3-bar-item w3-button">Home</a>
-        <a href="#" class="w3-bar-item w3-button">My Profile</a>
+        <a href="#" class="w3-bar-item w3-button">Users</a>
         <a href="#" class="w3-bar-item w3-button">Create Ticket</a>
         <a href="#" class="w3-bar-item w3-button">Settings</a>
         <a href="#" class="w3-bar-item w3-button">Logout</a>
@@ -27,6 +29,7 @@
       
       <div id="main">
         <div class="w3-bar w3-border w3-teal">
+        ${success }${usersuccess }
           <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
           <button type="menu" id="notifyme" style="float: right;margin-right:16px; margin-top:7px;background: none;border: none;" >
             <i class="fa fa-bell-o fa-2x"></i>

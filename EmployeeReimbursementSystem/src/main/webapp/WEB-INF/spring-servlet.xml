@@ -21,7 +21,7 @@
  
 <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
 <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>  
-<property name="url" value="jdbc:mysql://localhost:3306/emp_reimbursement?useSSL=false"></property>  
+<property name="url" value="jdbc:mysql://localhost:3306/employeereimbursement?useSSL=false"></property>  
 <property name="username" value="root"></property>  
 <property name="password" value="88723aman"></property>  
 </bean>  
@@ -31,6 +31,13 @@
 </bean>
 
 <bean id="userDao" class="com.employeeReimbursementSystem.dao.UsersDao">
+
+</bean>
+<bean id="factory" class="com.employeeReimbursementSystem.factory.EntityFactory">
+
+</bean>
+
+<bean id="loginDao" class="com.employeeReimbursementSystem.dao.LoginDao">
 
 </bean>
 <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
@@ -47,4 +54,12 @@
             </props>
         </property>
 </bean>
+   <!-- Spring File Upload Configuration -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- Maximum Upload Size (In Bytes) - 10 MB -->
+        <property name="maxUploadSize" value="21971520" />
+        <!-- Maximum Size Of The File In Memory (In Bytes) - 10 MB-->
+        <property name="maxInMemorySize" value="1048576" />
+    </bean>
+    
 </beans>

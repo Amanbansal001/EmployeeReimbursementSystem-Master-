@@ -35,10 +35,11 @@
 						<p>
 							<form:input class="w3-input w3-half " type="password"
 								path="password" placeholder="Enter Password" style="width:100%"
-								id="myInput" />
-							<span class="eye" onClick="myFunction()"> <!-- <i  id="hide1" class="fa fa-eye" ></i> -->
+								id="myInput"  	 />
+								<span class="eye" onClick="myFunction()"> <!-- <i  id="hide1" class="fa fa-eye" ></i> -->
 								<i id="hide2" class="fa fa-eye-slash"></i>
 							</span>
+						
 						<p>
 							<input type="submit"
 								class="w3-button w3-section w3-teal w3-ripple w3-margin-left "
