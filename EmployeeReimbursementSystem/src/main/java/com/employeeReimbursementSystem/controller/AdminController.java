@@ -42,7 +42,6 @@ public class AdminController {
 		if(checkSession != null)
 		{
 			m.addAttribute("success" ,"Admin Dashboard");
-			m.addAttribute("usersuccess" , "User Dsashboard");
 			return "UserDashboard";	
 		}
 		else
