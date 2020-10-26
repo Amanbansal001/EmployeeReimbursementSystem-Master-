@@ -30,9 +30,7 @@
 <property name="dataSource" ref="ds"></property>
 </bean>
 
-<bean id="userDao" class="com.employeeReimbursementSystem.dao.UsersDao">
 
-</bean>
 <bean id="factory" class="com.employeeReimbursementSystem.factory.EntityFactory">
 
 </bean>
@@ -40,6 +38,10 @@
 <bean id="loginDao" class="com.employeeReimbursementSystem.dao.LoginDao">
 
 </bean>
+<bean id="viewUserDao" class="com.employeeReimbursementSystem.dao.ViewUserDetails">
+
+</bean>
+
 <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
     <property name="host" value="smtp.gmail.com"/>
         <property name="port" value="25"/>

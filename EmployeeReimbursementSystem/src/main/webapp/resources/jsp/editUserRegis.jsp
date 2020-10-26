@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>User Registration Form</title>
+<title>Edit User Regis</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,8 +15,8 @@
 
 	<form:form
 		class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin"
-		method="post" action="/EmployeeReimbursementSystem/saveUserDetails" modelAttribute="uploadImage" enctype="multipart/form-data" >
-		<h2 class="w3-center">User Registration Form 
+		method="post" action="/EmployeeReimbursementSystem/editUserDetails" modelAttribute="uploadImage" enctype="multipart/form-data" >
+		<h2 class="w3-center">Edit  Registration Form 
 		${saved}
 		</h2>
 
@@ -135,6 +135,7 @@
 				value="Save Details ">
 		</p>
 	</form:form>
+
 
 </body>
 </html>

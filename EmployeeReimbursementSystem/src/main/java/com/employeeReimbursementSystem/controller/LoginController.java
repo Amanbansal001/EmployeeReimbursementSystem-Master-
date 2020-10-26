@@ -83,7 +83,9 @@ public class LoginController {
 
 	/* mail send to user if empID is correct */
 	@RequestMapping(value = "sendEmail", method = RequestMethod.POST)
-	public String sendEmail(@ModelAttribute("forgetPassword") UsersCreds creds, Model m) {
+	public String sendEmail(@ModelAttribute("forgetPassword") UsersCreds creds, Model m , HttpSession session) {
+		
+		
 		List<UsersCreds> fetchDetails = loginDao.fetchEmail(creds);
 		if(fetchDetails.isEmpty())
 		{
