@@ -1,101 +1,155 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body bgcolor="#D8D8D8">
-  <div class="w3-container w3-black">
-  <div class="icon_img"> 
-    <img src="resources/images/realcoderzicon.gif" alt="logo" style="height:10%;width:10%"> 
-  </div>
+<html>
+<title>Adimn Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+<body class="w3-light-grey">
+
+<!-- Top container -->
+<div class="w3-bar w3-top w3-blue w3-large" style="z-index:4">
+  <span class="w3-bar-item">RealcoderZ</span>
+<!--
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <input class="w3-bar-item w3-input w3-right" type="text"><i class="fa fa-search fa-fw w3-right"></i>
+  <span class="w3-bar-item">RealcoderZ</span>
+</div>-->
 </div>
-    <div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-teal" style="display:none; " id="mySidebar">
-        <button class="w3-bar-item w3-button w3-large"
-        onclick="w3_close()">Close</button>
-         <a href="#" class="w3-bar-item w3-button">Home</a>
-        <a href="showUsers" class="w3-bar-item w3-button">Users</a>
-        <a href="#" class="w3-bar-item w3-button">Create Ticket</a>
-        <a href="#" class="w3-bar-item w3-button">Settings</a>
-        <a href="logout" class="w3-bar-item w3-button">Logout</a>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+    <div class="w3-col s4">
+      <img src="/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
+    </div>
+  </div>
+  <hr>
+  <div class="w3-container">
+    <h5>Dashboard</h5>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Home</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Users</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-ticket fa-fw"></i> Generate Ticket</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-out fa-fw"></i>  Logout</a><br><br>
+  </div>
+</nav>
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i> Admin Dashboard</b></h5>
+  </header>
+
+  <div class="w3-row-padding w3-margin-bottom">
+    
+    <div class="w3-quarter">
+      <div class="w3-container w3-blue w3-padding-16">
+        <div class="w3-left"><i class="fa fa-ticket w3-xxxlarge"></i></div>
+        <div class="w3-right">
+          <h3>52</h3>
+        </div>
+        <div class="w3-clear"></div>
+        <h4>Total Tickets</h4>
       </div>
-      
-      <div id="main">
-        <div class="w3-bar w3-border w3-teal">
-        ${success }${usersuccess }
-          <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
-          <button type="menu" id="notifyme" style="float: right;margin-right:16px; margin-top:7px;background: none;border: none;" >
-            <i class="fa fa-bell-o fa-2x"></i>
-          </button>
-          <button type="submit" id="submitme" style="float: right;margin-right:16px; margin-top:7px;background: none;border: none;">
-            <i class="fa fa-search fa-2x"></i>
-          </button> 
-          <input type="text" class="w3-bar-item w3-input" placeholder="Search.." style="border-radius:15px; float:right; margin-right:16px; margin-top:7px;"> 
+    </div>
+
+    <div class="w3-quarter">
+      <div class="w3-container w3-red w3-padding-16">
+        <div class="w3-left"><i class="fa fa-clock-o w3-xxxlarge"></i></div>
+        <div class="w3-right">
+          <h3>99</h3>
         </div>
+        <div class="w3-clear"></div>
+        <h4>Pending Tickets</h4>
       </div>
-
-      <div class="w3-container w3-margin-top"> 
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-green w3-padding-16">
+        <div class="w3-left"><i class="fa fa-check w3-xxxlarge"></i></div>
+        <div class="w3-right">
+          <h3>23</h3>
+        </div>
+        <div class="w3-clear"></div>
+        <h4>Approved Tickets</h4>
       </div>
-      <div class="w3-container w3-margin-top"> 
-      </div>
-      <div class="w3-container w3-margin-top"> 
-      </div>
+    </div>
+  </div>
 
-      <div class="w3-cell-row">
-        <div class="w3-container w3-margin-right"> 
-        </div>
+  
+  <hr>
 
-        <div class="w3-container w3-white w3-cell w3-mobile">
-          <p class="w3-large" style="text-align: center;margin-top:60px;margin-bottom:60px">  Total Tickets  </p>
-          <div class="w3-light-grey w3-round-xlarge" style="margin-bottom:30px">
-            <div class="w3-container w3-blue w3-round-xlarge" style="width:25%">25%</div>
-          </div>
-        </div>
+  <div class="w3-container">
+    <h5>Recent Tickets</h5>
+    <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+      <tr>
+        <td>Ticket No:&nbsp;<!--Ticket No-->0001</td>
+        <td><button class="w3-button w3-blue">View</button></td>
+      </tr>
+      <tr>
+        <td>Ticket No:&nbsp;<!--Ticket No-->0002</td>
+        <td><button class="w3-button w3-blue">View</button></td>
+      </tr>
+      <tr>
+        <td>Ticket No:&nbsp;<!--Ticket No-->0003</td>
+        <td><button class="w3-button w3-blue">View</button></td>
+      </tr>
+      <tr>
+        <td>Ticket No:&nbsp;<!--Ticket No-->0004</td>
+        <td><button class="w3-button w3-blue">View</button></td>
+      </tr>
+      <tr>
+        <td>Ticket No:&nbsp;<!--Ticket No-->0005</td>
+        <td><button class="w3-button w3-blue">View</button></td>
+      </tr>
+      <tr>
+        <td>Ticket No:&nbsp;<!--Ticket No-->0006</td>
+        <td><button class="w3-button w3-blue">View</button></td>
+      </tr>
+    </table><br>
+    <button class="w3-button w3-dark-grey">View All Tickets  <i class="fa fa-arrow-right"></i></button>
+  </div>
+  <hr>
+  <br>
+  <!-- End page content -->
+</div>
 
-        <div class="w3-container w3-margin-right"> 
-        </div>
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
 
-        <div class="w3-container w3-white w3-cell w3-mobile">
-          <p class="w3-large" style="text-align: center;margin-top:60px;margin-bottom:60px">Approved Tickets</p>
-          <div class="w3-light-grey w3-round-xlarge" style="margin-bottom:30px">
-            <div class="w3-container w3-red w3-round-xlarge" style="width:25%">25%</div>
-          </div>
-        </div>
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
 
-        <div class="w3-container w3-margin-right"> 
-        </div>
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
 
-        <div class="w3-container w3-white w3-cell w3-mobile w3-margin">
-          <p class="w3-large" style="text-align: center;margin-top:60px;margin-bottom:60px">Pending Tickets</p>
-          <div class="w3-light-grey w3-round-xlarge" style="margin-bottom:30px">
-            <div class="w3-container w3-green w3-round-xlarge" style="width:25%">25%</div>
-          </div>
-        </div>
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+</script>
 
-        <div class="w3-container w3-margin-right"> 
-        </div>
-      </div>
-
-        <script>
-          function w3_open() {
-            document.getElementById("main").style.marginLeft = "20%";
-            document.getElementById("mySidebar").style.width = "20%";
-            document.getElementById("mySidebar").style.display = "block";
-            document.getElementById("openNav").style.display = 'none';
-          }
-          function w3_close() {
-            document.getElementById("main").style.marginLeft = "0%";
-            document.getElementById("mySidebar").style.display = "none";
-            document.getElementById("openNav").style.display = "inline-block";
-          }
-          </script>
-          
 </body>
 </html>
