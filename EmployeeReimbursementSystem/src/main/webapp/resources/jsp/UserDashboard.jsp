@@ -21,10 +21,10 @@
         <button class="w3-bar-item w3-button w3-large"
         onclick="w3_close()">Close</button>
          <a href="#" class="w3-bar-item w3-button">Home</a>
-        <a href="#" class="w3-bar-item w3-button">Users</a>
+        <a href="showUsers" class="w3-bar-item w3-button">Users</a>
         <a href="#" class="w3-bar-item w3-button">Create Ticket</a>
         <a href="#" class="w3-bar-item w3-button">Settings</a>
-        <a href="#" class="w3-bar-item w3-button">Logout</a>
+        <a href="logout" class="w3-bar-item w3-button">Logout</a>
       </div>
       
       <div id="main">

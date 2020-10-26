@@ -25,9 +25,9 @@
 			<p>
 			<div class="w3-center">
 				<form:form action="login" method="post" modelAttribute="usercreds">
-					<div class="w3-center">
 						<img src="resources/images/real logo.png" alt="logo"
 							style="width: 40%">
+						
 						<p>
 							${notFound }
 							<form:input class="w3-input w3-half " type="text" path="empId"
