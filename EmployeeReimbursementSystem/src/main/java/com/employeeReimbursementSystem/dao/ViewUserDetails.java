@@ -36,7 +36,6 @@ public class ViewUserDetails {
 				userDetails.setFile(rs.getBytes(11));
 				return userDetails;
 			}
-			
 		});
 	}
 	public UserDetails getOneUser(String empId)

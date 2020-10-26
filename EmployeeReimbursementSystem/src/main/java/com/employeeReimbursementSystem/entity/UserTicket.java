@@ -1,7 +1,5 @@
 package com.employeeReimbursementSystem.entity;
-/*
-*@Author: Shubham Mishra
-*/
+
 import com.employeeReimbursementSystem.factory.EntityInterface;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 

@@ -10,15 +10,17 @@
     <title>Submit Reimbursement Request</title>
 </head>
 <body>
+
     <div class="w3-container w3-center w3-display-middle w3-animate-zoom">
   <div class="w3-card-4" style="width:100%">
     <header class="w3-container w3-center">
       <h3>Upload Bill</h3>
     </header>
+     <form:form action="GenerateUserTicketDao" method = "POST" modelAttribute="userTicketCreds" enctype="multipart/form-data">     
     <div class="w3-container">
       <p>${success}</p>
       <hr>
-      <form:form action="GenerateUserTicketDao" method = "POST" modelAttribute="UserTicket" enctype="multipart/form-data">     
+     
             <form:input class="w3-button" type="file" path="image"/><br>
             Amount:
             <form:input class="w3-button" path="amount"/><br>

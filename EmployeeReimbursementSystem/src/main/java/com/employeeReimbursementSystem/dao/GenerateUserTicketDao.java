@@ -8,12 +8,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class GenerateUserTicketDao {
     @Autowired
-	JdbcTemplate template;   
+	JdbcTemplate generateUserTicketDao;   
 
-	public static int save(UserTicket data) {
+	public  int saveUserTicket(UserTicket data) {
 		byte []image = data.getImage().getBytes();
-		 String sql="insert into user_ticket(emp_id,name,amount,image,timestamp,approved_by,forwarded_to,remark,status) values('"+data.getEmpId()+"','"+data.getName()+"','"+data.getAmount()+"','"+image+"','"+data.getTimeStamp()+"','"+data.getApprovedBy()+"','"+data.getForwardedTo()+"','"+data.getRemark()+"','"+data.getStatus()+"')";	
-		return template.update(sql);
+		 String sql="insert into user_ticket(emp_id,name,amount,image,timestamp,approved_by,forwarded_to,remark,status) values(?,?,?,?,?,?,?,?,?)";
+		return generateUserTicketDao.update(sql, new Object[] {data.getEmpId() , data.getName() , data.getAmount() ,image ,data.getTimeStamp() , data.getApprovedBy() , data.getForwardedTo() , data.getRemark() , data.getStatus()});
 		
 	}
 }
