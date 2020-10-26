@@ -30,9 +30,6 @@
 <property name="dataSource" ref="ds"></property>
 </bean>
 
-<bean id="userDao" class="com.employeeReimbursementSystem.dao.UsersDao">
-
-</bean>
 <bean id="factory" class="com.employeeReimbursementSystem.factory.EntityFactory">
 
 </bean>
@@ -41,8 +38,7 @@
 
 </bean>
 <!-- UserTicket Beans -->
-<bean id="GenerateUserTicket" class="com.employeeReimbursementSystem.dao.UsersDao"></bean>
-<bean id ="billDao" class="com.employeeReimbursementSystem.dao.GenerateUserTicketDao"></bean>
+<bean id ="GenerateUserTicket" class="com.employeeReimbursementSystem.dao.GenerateUserTicketDao"></bean>
 <!-- UserTicket Beans End -->
 <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
     <property name="host" value="smtp.gmail.com"/>
