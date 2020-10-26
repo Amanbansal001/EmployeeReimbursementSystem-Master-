@@ -12,11 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.employeeReimbursementSystem.dao.LoginDao;
 import com.employeeReimbursementSystem.entity.UsersCreds;
 import com.employeeReimbursementSystem.factory.EntityFactory;
-import com.mysql.cj.Session;
 
 @Controller
 public class LoginController {
@@ -34,7 +34,7 @@ public class LoginController {
 	JavaMailSender mailSender;
 
 	/* return the home page */
-	@RequestMapping("/")
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String getHome(Model m) {
 		logger.info("return login Page");
 		m.addAttribute("usercreds", factory.getInstance("userCreds"));
@@ -45,22 +45,9 @@ public class LoginController {
 	 * checks credentials of users and if Valid then return the adminDashboard else
 	 * redirect to same page or password can be sent to mail
 	 */
-	@RequestMapping("login")
+	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String getLogin(@ModelAttribute("userCreds") UsersCreds creds, Model m, HttpSession session) {
 
-		logger.info("login url hit");
-		if (creds.getPassword().isEmpty()) {
-			UsersCreds fetchDetails = loginDao.fetchEmail(creds);
-			SimpleMailMessage mailMsg = new SimpleMailMessage();
-			mailMsg.setTo(fetchDetails.getEmail());
-			mailMsg.setSubject("Forget Password , Retrieve ");
-			mailMsg.setText(fetchDetails.getPassword());
-
-			mailSender.send(mailMsg);
-			m.addAttribute("notFound", "Password Send to mail , registered with EmpID");
-			m.addAttribute("usercreds", new UsersCreds());
-			return "loginNew";
-		}
 		List<UsersCreds> checkUserCreds = loginDao.getUserCreds(creds);
 
 		if (checkUserCreds.isEmpty()) {
@@ -78,8 +65,8 @@ public class LoginController {
 			}
 			if (checkUser.getRole().equals("user")) {
 				session.setAttribute("sessionStarted", creds.getEmpId());
-				m.addAttribute("success", "Not Authenticated");
-				return "redirect:/adminDashboard";
+				m.addAttribute("usersuccess", "User Dashboard");
+				return "UserDashboard";
 			}
 		}
 		m.addAttribute("notFound", "Invalid credentials");
@@ -87,7 +74,41 @@ public class LoginController {
 		return "loginNew";
 	}
 
-	@RequestMapping("/logout")
+	/*return the forget Page */
+	@RequestMapping(value = "forgetPassword", method = RequestMethod.GET)
+	public String displayForgetPassword(Model m) {
+		m.addAttribute("forgetPassword", factory.getInstance("userCreds"));
+		return "forgetPassword";
+	}
+
+	/* mail send to user if empID is correct */
+	@RequestMapping(value = "sendEmail", method = RequestMethod.POST)
+	public String sendEmail(@ModelAttribute("forgetPassword") UsersCreds creds, Model m) {
+		List<UsersCreds> fetchDetails = loginDao.fetchEmail(creds);
+		if(fetchDetails.isEmpty())
+		{
+			m.addAttribute("notFound", "EmpID is Not Valid");
+			m.addAttribute("forgetPassword", factory.getInstance("userCreds"));
+			return "forgetPassword";
+		}
+		else {
+			
+		for(UsersCreds sendEMail : fetchDetails)
+		{
+			SimpleMailMessage mailMsg = new SimpleMailMessage();
+			mailMsg.setTo(sendEMail.getEmail());
+			mailMsg.setSubject("Forget Password , Retrieve ");
+			mailMsg.setText(sendEMail.getPassword());
+			mailSender.send(mailMsg);
+		}
+		m.addAttribute("notFound", "Password Send to mail , registered with EmpID");
+		m.addAttribute("usercreds", factory.getInstance("userCreds"));
+		return "loginNew";
+		}
+	}
+
+	/*when user logout , login page returns*/
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";

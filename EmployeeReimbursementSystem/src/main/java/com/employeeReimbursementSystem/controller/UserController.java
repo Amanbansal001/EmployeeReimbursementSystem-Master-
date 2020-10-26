@@ -9,10 +9,13 @@ import com.employeeReimbursementSystem.entity.UserTicket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 public class UserController {
+
     @Autowired
     GenerateUserTicketDao userTicketDao;
     
@@ -30,6 +33,11 @@ public class UserController {
 
     @RequestMapping("generateuserticketNew")
 	public String uploadNew(Model m)
+
+	
+	@RequestMapping("/userDashboard")
+	public String displayHome()
+
 	{
 		//returning html content as a success message
 		 m.addAttribute("success" , "<div class=\"w3-panel w3-border w3-border-blue w3-display-container\">\r\n"
