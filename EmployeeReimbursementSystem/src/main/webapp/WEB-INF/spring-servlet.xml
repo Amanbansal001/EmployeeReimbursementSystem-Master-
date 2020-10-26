@@ -38,10 +38,14 @@
 <bean id="loginDao" class="com.employeeReimbursementSystem.dao.LoginDao">
 
 </bean>
+
+<!-- UserTicket Beans -->
+<bean id ="GenerateUserTicket" class="com.employeeReimbursementSystem.dao.GenerateUserTicketDao"></bean>
+<!-- UserTicket Beans End -->
+
 <bean id="viewUserDao" class="com.employeeReimbursementSystem.dao.ViewUserDetails">
 
 </bean>
-
 <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
     <property name="host" value="smtp.gmail.com"/>
         <property name="port" value="25"/>
