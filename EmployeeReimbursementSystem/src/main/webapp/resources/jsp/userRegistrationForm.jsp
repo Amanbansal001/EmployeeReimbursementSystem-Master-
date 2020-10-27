@@ -5,7 +5,7 @@
 
 <!DOCTYPE html>
 <html>
-<title>Edit User</title>
+<title>Register User</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -13,16 +13,16 @@
 <!-- First Grid: Logo & About -->
 	<div class="w3-row w3-card w3-block">
 		<div class="w3-half  w3-container w3-center" style="height: 800px">
-		<img src="resources/images/chaandani.jpg"
+			<img src="resources/images/chaandani.jpg"
 				style="width: 100%; height: 100%; object-fit: cover;">
 		</div>
 		<!--form inputs-->
 		<div class="w3-half w3-container" style="height: 600px">
 			<div class="w3-container">
 				<div class="w3-container w3-teal" style="width: 100%;">
-					<h2>Edit User Details</h2>
+					<h2>Register Employee</h2>
 				</div>
-				<form:form class="w3-container" action="editUserDetails" modelAttribute="editUser"  enctype="multipart/form-data">
+				<form:form class="w3-container" action="saveUserDetails" modelAttribute="uploadImage"  enctype="multipart/form-data">
 					<p>
 						<form:input path="empId" class="w3-input"  placeholder="Employee id"/>
 					<p>

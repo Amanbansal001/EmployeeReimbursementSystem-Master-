@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.employeeReimbursementSystem.dao.LoginDao;
 import com.employeeReimbursementSystem.entity.UsersCreds;
@@ -35,10 +36,10 @@ public class LoginController {
 
 	/* return the home page */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String getHome(Model m) {
-		logger.info("return login Page");
-		m.addAttribute("usercreds", factory.getInstance("userCreds"));
-		return "loginNew";
+	public ModelAndView getHome() {
+		ModelAndView modelandview = new ModelAndView("loginNew");
+		modelandview.addObject("usercreds", factory.getInstance("userCreds"));
+		return modelandview;
 	}
 
 	/*
@@ -59,14 +60,13 @@ public class LoginController {
 		for (UsersCreds checkUser : checkUserCreds) {
 			/* session starts when user authenticated */
 
-			if (checkUser.getRole().equals("admin")) {
+			if (checkUser.getRole().equals("Admin")) {
 				session.setAttribute("sessionStarted", creds.getEmpId());
 				return "redirect:/adminDashboard";
 			}
-			if (checkUser.getRole().equals("user")) {
+			if (checkUser.getRole().equals("User")) {
 				session.setAttribute("sessionStarted", creds.getEmpId());
-				m.addAttribute("usersuccess", "User Dashboard");
-				return "UserDashboard";
+				return "redirect:/userDashboard";
 			}
 		}
 		m.addAttribute("notFound", "Invalid credentials");
@@ -74,7 +74,7 @@ public class LoginController {
 		return "loginNew";
 	}
 
-	/*return the forget Page */
+	/* return the forget Page */
 	@RequestMapping(value = "forgetPassword", method = RequestMethod.GET)
 	public String displayForgetPassword(Model m) {
 		m.addAttribute("forgetPassword", factory.getInstance("userCreds"));
@@ -83,33 +83,29 @@ public class LoginController {
 
 	/* mail send to user if empID is correct */
 	@RequestMapping(value = "sendEmail", method = RequestMethod.POST)
-	public String sendEmail(@ModelAttribute("forgetPassword") UsersCreds creds, Model m , HttpSession session) {
-		
-		
+	public String sendEmail(@ModelAttribute("forgetPassword") UsersCreds creds, Model m, HttpSession session) {
+
 		List<UsersCreds> fetchDetails = loginDao.fetchEmail(creds);
-		if(fetchDetails.isEmpty())
-		{
+		if (fetchDetails.isEmpty()) {
 			m.addAttribute("notFound", "EmpID is Not Valid");
 			m.addAttribute("forgetPassword", factory.getInstance("userCreds"));
 			return "forgetPassword";
-		}
-		else {
-			
-		for(UsersCreds sendEMail : fetchDetails)
-		{
-			SimpleMailMessage mailMsg = new SimpleMailMessage();
-			mailMsg.setTo(sendEMail.getEmail());
-			mailMsg.setSubject("Forget Password , Retrieve ");
-			mailMsg.setText(sendEMail.getPassword());
-			mailSender.send(mailMsg);
-		}
-		m.addAttribute("notFound", "Password Send to mail , registered with EmpID");
-		m.addAttribute("usercreds", factory.getInstance("userCreds"));
-		return "loginNew";
+		} else {
+
+			for (UsersCreds sendEMail : fetchDetails) {
+				SimpleMailMessage mailMsg = new SimpleMailMessage();
+				mailMsg.setTo(sendEMail.getEmail());
+				mailMsg.setSubject("Forget Password , Retrieve ");
+				mailMsg.setText(sendEMail.getPassword());
+				mailSender.send(mailMsg);
+			}
+			m.addAttribute("notFound", "Password Send to mail , registered with EmpID");
+			m.addAttribute("usercreds", factory.getInstance("userCreds"));
+			return "loginNew";
 		}
 	}
 
-	/*when user logout , login page returns*/
+	/* when user logout , login page returns */
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();

@@ -29,13 +29,11 @@
 <bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
 <property name="dataSource" ref="ds"></property>
 </bean>
-
-
-<bean id="factory" class="com.employeeReimbursementSystem.factory.EntityFactory">
+<bean id="loginDao" class="com.employeeReimbursementSystem.dao.LoginDao">
 
 </bean>
 
-<bean id="loginDao" class="com.employeeReimbursementSystem.dao.LoginDao">
+<bean id="factory" class="com.employeeReimbursementSystem.factory.EntityFactory">
 
 </bean>
 

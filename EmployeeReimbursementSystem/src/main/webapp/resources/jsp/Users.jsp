@@ -45,7 +45,7 @@
 <h1>${notFound}</h1>
 
 <c:forEach var="val" items="${userImage}">
-<div class="w3-container w3-card-4 w3-margin-left w3-margin-top ">
+<div class="w3-container w3-card-4 w3-margin-left w3-margin-top w3-half">
 	<a href="userProfile/${val.empId}"><img   class="w3-circle"  src="data:image/jpeg;base64,${val.imageDisplay}" 
 							style="width: 10% ">
 						</a>	
