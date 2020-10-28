@@ -2,19 +2,22 @@
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
-<title>User Dashboard</title>
+<title>Admin Dashboard</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
 <body class="w3-light-grey">
-<c:forEach var="getuserDetails" items="${userDetails}">
+
+<c:forEach var="userImage" items="${userDetails}">
 <!-- Top container -->
 <div class="w3-bar w3-top w3-blue w3-large" style="z-index:4">
   <span class="w3-bar-item">RealcoderZ</span>
@@ -28,34 +31,34 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
-      <img src="data:image/jpeg;base64,${getuserDetails.imageDisplay}" class="w3-circle w3-margin-right" style="width:46px">
+      <img src="data:image/jpeg;base64,${userImage.imageDisplay}" class="w3-circle w3-margin-right" style="width:46px">
     </div>
- Welcome , ${getuserDetails.firstName} ${getuserDetails.lastName}
+    Welcome :${userImage.firstName }
   </div>
   <hr>
   <div class="w3-container">
-    <h5>User Dashboard</h5>
+    <h5>Admin Dashboard</h5>
   </div>
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>Â  Close Menu</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Home</a>
-    <a href="showUsers" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Users</a>
-    <a href="generateticket" class="w3-bar-item w3-button w3-padding"><i class="fa fa-ticket fa-fw"></i> Generate Ticket</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>Settings</a>
-    <a href="logout" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-out fa-fw"></i> Logout</a><br><br>
+    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue" ><i class="fa fa-users fa-fw"></i>  Home</a>
+    <a href="showUsers" class="w3-bar-item w3-button w3-padding" id="users"><i class="fa fa-users fa-fw"></i> Users</a>
+    <a href="generateuserticket" class="w3-bar-item w3-button w3-padding" id="generate_ticket"><i class="fa fa-ticket fa-fw"></i>Generate Ticket</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding" id="settings"><i class="fa fa-cog fa-fw"></i>  Settings</a>
+    <a href="logout" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-out fa-fw"></i>  Logout</a><br><br>
   </div>
 </nav>
-</c:forEach>
 
+</c:forEach>
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+<div class="w3-main" id="content" style="margin-left:300px;margin-top:43px;">
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> User Dashboard</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Admin Dashboard</b></h5>
   </header>
 
   <div class="w3-row-padding w3-margin-bottom">
@@ -128,7 +131,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
   <hr>
   <br>
-  
   <!-- End page content -->
 </div>
 
@@ -157,5 +159,28 @@ function w3_close() {
 }
 </script>
 
+<script>
+  $(document).ready(function(){
+      $("#users").click(function(){
+          $("#content").load("/showUsers");
+      });
+      
+      $("#generate_ticket").click(function(){
+          $("#content").load("generateuserticket.jsp");
+      });
+      
+      $("#settings").click(function(){
+          $("#content").load("#");
+      });
+      
+      $("#").click(function(){
+          $("#content").load("");
+      });
+      
+      $("#").click(function(){
+          $("#content").load("");
+      });
+  });
+  </script>
 </body>
 </html>
