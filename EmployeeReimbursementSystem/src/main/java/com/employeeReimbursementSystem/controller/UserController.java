@@ -19,6 +19,12 @@ import com.employeeReimbursementSystem.entity.UserTicket;
 @Controller
 public class UserController {
 
+	
+	
+	@RequestMapping("/userDashboard")
+	public String displayHome()
+
+
     @Autowired
     GenerateUserTicketDao userTicketDao;
     
@@ -59,6 +65,7 @@ public class UserController {
 
     @RequestMapping("generateuserticketNew")
 	public String displayHome( Model m)
+
 
 	{
 		//returning html content as a success message
