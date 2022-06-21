@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,9 +26,9 @@
 			<p>
 			<div class="w3-center">
 				<form:form action="login" method="post" modelAttribute="usercreds">
-					<div class="w3-center">
 						<img src="resources/images/real logo.png" alt="logo"
 							style="width: 40%">
+						
 						<p>
 							${notFound }
 							<form:input class="w3-input w3-half " type="text" path="empId"
@@ -35,20 +36,19 @@
 						<p>
 							<form:input class="w3-input w3-half " type="password"
 								path="password" placeholder="Enter Password" style="width:100%"
-								id="myInput"  	 />
-								<span class="eye" onClick="myFunction()"> <!-- <i  id="hide1" class="fa fa-eye" ></i> -->
+								id="myInput" />
+							<span class="eye" onClick="myFunction()"> 
 								<i id="hide2" class="fa fa-eye-slash"></i>
 							</span>
-						
 						<p>
 							<input type="submit"
 								class="w3-button w3-section w3-teal w3-ripple w3-margin-left "
 								value="Login"> <br> <input id="milk"
 								class="w3-check w3-margin-left " type="checkbox"
-								checked="checked"> <label>Remember Me</label> <input
-								type="submit"
-								class="w3-button w3-section w3-teal w3-ripple w3-margin-left "
-								value="forget Password">
+								checked="checked"> <label>Remember Me</label> <a
+								href="forgetPassword"
+								class="w3-button w3-section w3-teal w3-ripple w3-margin-left ">Forget
+								Password</a>
 						<p>
 				</form:form>
 
@@ -78,5 +78,6 @@ function myFunction(){
 		}	
 }
 </script>
+
 </body>
 </html>
