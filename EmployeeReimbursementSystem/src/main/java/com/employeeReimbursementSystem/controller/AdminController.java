@@ -112,6 +112,7 @@ System.out.println(getUserDetails);
 	@RequestMapping(value = "editUserDetails", method = RequestMethod.POST)
 	public String saveEdituser(@ModelAttribute("editUser") UserDetails details, Model m) {
 		int i = userDetails.saveEditUser(details);
+		int j = userDetails.saveEditUser(details);
 		if (i > 0) {
 			m.addAttribute("saved", "data saved Successfully");
 			m.addAttribute("uploadImage", new UserDetails());
@@ -119,6 +120,9 @@ System.out.println(getUserDetails);
 		} else {
 			m.addAttribute("saved", "data  not saved Successfully");
 			m.addAttribute("uploadImage", new UserDetails());
+			
+			m.addAttribute("saved", "data  not saved Successfully");
+			m.addAttribute("uploadImage", new UserDetails())
 			return "editUserRegis";
 		}
 	}
