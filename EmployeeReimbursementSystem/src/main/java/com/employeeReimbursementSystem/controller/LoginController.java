@@ -62,13 +62,9 @@ public class LoginController {
 			return "loginNew";
 		}
 		List<UsersCreds> checkUserCreds = loginDao.getUserCreds(creds);
+		List<UsersCreds> checkUserCreds1 = loginDao.getUserCreds(creds);
 
-		if (checkUserCreds.isEmpty()) {
-
-			m.addAttribute("notFound", "Invalid credentials");
-			m.addAttribute("usercreds", factory.getInstance("userCreds"));
-			return "loginNew";
-		}
+		
 		for (UsersCreds checkUser : checkUserCreds) {
 			/* session starts when user authenticated */
 
