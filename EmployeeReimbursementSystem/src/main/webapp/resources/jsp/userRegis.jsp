@@ -15,9 +15,9 @@
 
 	<form:form
 		class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin"
-		method="post" action="saveUserDetails" modelAttribute="userDetails" enctype="multipart/form-data" >
-		<h2 class="w3-center">User Registration Form !!!! 
-		${Details }
+		method="post" action="/EmployeeReimbursementSystem/saveUserDetails" modelAttribute="uploadImage" enctype="multipart/form-data" >
+		<h2 class="w3-center">User Registration Form 
+		${saved}
 		</h2>
 
 		<div class="w3-row w3-section">
@@ -25,8 +25,8 @@
 				<i class="w3-xxlarge fa fa-user"></i>
 			</div>
 			<div class="w3-rest">
-				<form:input path="name" class="w3-input w3-border" 
-					 placeholder="Enter Name" />
+				<form:input path="empId" class="w3-input w3-border" 
+					 placeholder="Enter empId" required="true" />
 			</div>
 		</div>
 
@@ -35,8 +35,78 @@
 				<i class="w3-xxlarge fa fa-user"></i>
 			</div>
 			<div class="w3-rest">
+				<form:input path="role" class="w3-input w3-border" 
+					 placeholder="Enter role"   required="true"/>
+			</div>
+		</div>
+		
+		<div class="w3-row w3-section">
+			<div class="w3-col" style="width: 50px">
+				<i class="w3-xxlarge fa fa-user"></i>
+			</div>
+			<div class="w3-rest">
+				<form:input path="password" class="w3-input w3-border" 
+					 placeholder="Enter password"  required="true"/>
+			</div>
+		</div>
+		
+		<div class="w3-row w3-section">
+			<div class="w3-col" style="width: 50px">
+				<i class="w3-xxlarge fa fa-user"></i>
+			</div>
+			<div class="w3-rest">
+				<form:input path="designation" class="w3-input w3-border" 
+					 placeholder="Enter designation"  required="true"/>
+			</div>
+		</div>
+		
+		<div class="w3-row w3-section">
+			<div class="w3-col" style="width: 50px">
+				<i class="w3-xxlarge fa fa-user"></i>
+			</div>
+			<div class="w3-rest">
+				<form:input path="firstName" class="w3-input w3-border" 
+					 placeholder="Enter first name"  required="true"/>
+			</div>
+		</div>
+		
+		<div class="w3-row w3-section">
+			<div class="w3-col" style="width: 50px">
+				<i class="w3-xxlarge fa fa-user"></i>
+			</div>
+			<div class="w3-rest">
+				<form:input path="lastName" class="w3-input w3-border" 
+					 placeholder="Enter lastName"  required="true"/>
+			</div>
+		</div>
+		
+		<div class="w3-row w3-section">
+			<div class="w3-col" style="width: 50px">
+				<i class="w3-xxlarge fa fa-user"></i>
+			</div>
+			<div class="w3-rest">
+				<form:input path="gender" class="w3-input w3-border" 
+					 placeholder="Enter gender"  required="true"/>
+			</div>
+		</div>
+		
+		<div class="w3-row w3-section">
+			<div class="w3-col" style="width: 50px">
+				<i class="w3-xxlarge fa fa-user"></i>
+			</div>
+			<div class="w3-rest">
+				<form:input path="mobileNo" class="w3-input w3-border" 
+					 placeholder="Enter mobile no"  required="true"/>
+			</div>
+		</div>
+		
+		<div class="w3-row w3-section">
+			<div class="w3-col" style="width: 50px">
+				<i class="w3-xxlarge fa fa-user"></i>
+			</div>
+			<div class="w3-rest">
 				<form:input   path="email" class="w3-input w3-border"
-					 placeholder="Enter email" />
+					 placeholder="Enter email"  required="true"/>
 			</div>
 		</div>
 
@@ -45,22 +115,20 @@
 				<i class="w3-xxlarge fa fa-envelope-o"></i>
 			</div>
 			<div class="w3-rest">
-				<form:input  type="file" path="uploadfile" class="w3-input w3-border" 
-					placeholder="Upload File" />
+				<form:input  path="currentAddress" class="w3-input w3-border" 
+					placeholder="enter address"  required="true" />
 			</div>
 		</div> 
 
-		<div class="w3-row w3-section">
+ <div class="w3-row w3-section">
 			<div class="w3-col" style="width: 50px">
-				<i class="w3-xxlarge fa fa-phone"></i>
+				<i class="w3-xxlarge fa fa-envelope-o"></i>
 			</div>
 			<div class="w3-rest">
-				<form:input path="mobileNo"  class="w3-input w3-border" 
-					placeholder="Enter mobile No" />
+				<form:input  type="file" path="uploadfile" class="w3-input w3-border" 
+					placeholder="Upload File"  required="true" />
 			</div>
-		</div>
-
-
+		</div> 
 
 		<p class="w3-center">
 			<input type="submit" class="w3-button w3-section w3-blue w3-ripple"

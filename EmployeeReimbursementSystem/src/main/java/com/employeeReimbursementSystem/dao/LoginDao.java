@@ -26,20 +26,24 @@ public class LoginDao {
 						usersCreds.setEmpId(rs.getString(1));
 						usersCreds.setEmail(rs.getString(2));
 						usersCreds.setPassword(rs.getString(3));
-			           usersCreds.setRole(rs.getString(4));
+						usersCreds.setRole(rs.getString(4));
 						return usersCreds;
 					}
 				});
-}
-//	public UsersCreds getUserCreds(UsersCreds usercreds)
-//	{
-//		String sql = "select * from user_creds where emp_id =? and password=?";
-//		return loginDao.queryForObject(sql, new Object[] {usercreds.getEmpId() , usercreds.getPassword()} , new BeanPropertyRowMapper<UsersCreds>(UsersCreds.class));
-//	}
-	public UsersCreds fetchEmail(UsersCreds creds) {
-		String sql = "select * from user_creds where emp_id = ?";
-		return loginDao.queryForObject(sql, new Object[] { creds.getEmpId() },
-				new BeanPropertyRowMapper<UsersCreds>(UsersCreds.class));
+	}
+
+	public List<UsersCreds> fetchEmail(UsersCreds creds) {
+		String sql = "select * from user_creds where emp_id=?";
+		return loginDao.query(sql, new Object[] { creds.getEmpId() }, new RowMapper<UsersCreds>() {
+			public UsersCreds mapRow(ResultSet rs, int rowNum) throws SQLException {
+				UsersCreds usersCreds = new UsersCreds();
+				usersCreds.setEmpId(rs.getString(1));
+				usersCreds.setEmail(rs.getString(2));
+				usersCreds.setPassword(rs.getString(3));
+				usersCreds.setRole(rs.getString(4));
+				return usersCreds;
+			}
+		});
 	}
 
 }

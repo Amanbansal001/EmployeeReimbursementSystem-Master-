@@ -9,14 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<form:form method="get" action="displayImage" modelAttribute="showImag">
-Name : ${showImag.name }
+<c:forEach var="showImag" items="${userImage}">
+Name : ${showImag.empId}
 email : ${showImag.email }
 <br>
 Image :			<img src="data:image/jpeg;base64,${showImag.imageDisplay}" 
-							style="width: 20% ">
+							style="width: 10% ">
 
-</form:form>
+</c:forEach>
 </body>
 </html>

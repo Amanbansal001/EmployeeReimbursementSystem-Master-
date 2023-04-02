@@ -29,15 +29,19 @@
 <bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
 <property name="dataSource" ref="ds"></property>
 </bean>
-
-<bean id="userDao" class="com.employeeReimbursementSystem.dao.UsersDao">
+<bean id="loginDao" class="com.employeeReimbursementSystem.dao.LoginDao">
 
 </bean>
+
 <bean id="factory" class="com.employeeReimbursementSystem.factory.EntityFactory">
 
 </bean>
 
-<bean id="loginDao" class="com.employeeReimbursementSystem.dao.LoginDao">
+<!-- UserTicket Beans -->
+<bean id ="GenerateUserTicket" class="com.employeeReimbursementSystem.dao.GenerateUserTicketDao"></bean>
+<!-- UserTicket Beans End -->
+
+<bean id="viewUserDao" class="com.employeeReimbursementSystem.dao.ViewUserDetails">
 
 </bean>
 <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
